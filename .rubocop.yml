@@ -1,0 +1,45 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+  # 日本語対応
+  DisplayStyleGuide: true
+  StyleGuideBaseURL: https://github.com/fortissimo1997/ruby-style-guide/blob/japanese/README.ja.md
+  Exclude:
+    - "assets/**/*"
+    - "bin/**/*"
+    - "db/schema.rb"
+    - "log/**/*"
+    - "node_modules/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+
+# 日本語のコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# public class にドキュメント無くてもOK
+Style/Documentation:
+  Enabled: false
+
+# frozen_string_literal を強制しない
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 1行の文字数
+Layout/LineLength:
+  Max: 160
+
+# 文字列はダブルクォートに統一
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# %w, %i を強制しない
+Style/WordArray:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
