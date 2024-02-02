@@ -13,7 +13,7 @@ RSpec.describe "StaticPages", type: :request do
       # レスポンスが成功したか？
       expect(response).to have_http_status(:success)
       title_text = get_title_text(response)
-      expect(title_text).to eq("Home | #{base_title}")
+      expect(title_text).to eq(base_title)
     end
   end
 
@@ -24,7 +24,7 @@ RSpec.describe "StaticPages", type: :request do
       expect(response).to have_http_status(:success)
       # タイトルの表示が適当か？
       title_text = get_title_text(response)
-      expect(title_text).to eq("Home | #{base_title}")
+      expect(title_text).to eq(base_title)
     end
   end
 
