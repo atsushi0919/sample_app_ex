@@ -1,10 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "StaticPages", type: :request do
   let(:base_title) { "Ruby on Rails Tutorial Sample App" }
 
   def get_title_text(response)
-    Nokogiri::HTML(response.body).css('title').text
+    Nokogiri::HTML(response.body).css("title").text
   end
 
   describe "GET root" do

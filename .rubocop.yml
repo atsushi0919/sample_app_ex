@@ -43,3 +43,8 @@ Style/WordArray:
 
 Style/SymbolArray:
   Enabled: false
+
+# RSpec ではブロックの行数制限なし
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
