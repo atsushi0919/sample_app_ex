@@ -10,8 +10,9 @@ RSpec.describe "StaticPages", type: :request do
   describe "GET root" do
     it "home ページが表示される" do
       get root_url
-      # レスポンスが成功したか？
+      # レスポンス
       expect(response).to have_http_status(:success)
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq(base_title)
     end
@@ -20,9 +21,9 @@ RSpec.describe "StaticPages", type: :request do
   describe "GET /home" do
     it "home ページが表示される" do
       get static_pages_home_url
-      # レスポンスが成功したか？
+      # レスポンス
       expect(response).to have_http_status(:success)
-      # タイトルの表示が適当か？
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq(base_title)
     end
@@ -31,9 +32,9 @@ RSpec.describe "StaticPages", type: :request do
   describe "GET /help" do
     it "help ページが表示される" do
       get static_pages_help_url
-      # レスポンスが成功したか？
+      # レスポンス
       expect(response).to have_http_status(:success)
-      # タイトルの表示が適当か？
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq("Help | #{base_title}")
     end
@@ -42,9 +43,9 @@ RSpec.describe "StaticPages", type: :request do
   describe "GET /about" do
     it "about ページが表示される" do
       get static_pages_about_url
-      # レスポンスが成功したか？
+      # レスポンス
       expect(response).to have_http_status(:success)
-      # タイトルの表示が適当か？
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq("About | #{base_title}")
     end
@@ -53,9 +54,9 @@ RSpec.describe "StaticPages", type: :request do
   describe "GET /contact" do
     it "contact ページが表示される" do
       get static_pages_contact_url
-      # レスポンスが成功したか？
+      # レスポンス
       expect(response).to have_http_status(:success)
-      # タイトルの表示が適当か？
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq("Contact | #{base_title}")
     end
