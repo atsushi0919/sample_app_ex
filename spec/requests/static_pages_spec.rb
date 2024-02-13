@@ -7,22 +7,12 @@ RSpec.describe "StaticPages", type: :request do
     Nokogiri::HTML(response.body).css("title").text
   end
 
-  describe "GET root" do
+  describe "GET /" do
     it "home ページが表示される" do
-      get root_url
-      # レスポンスが成功したか？
+      get root_path
+      # レスポンス
       expect(response).to have_http_status(:success)
-      title_text = get_title_text(response)
-      expect(title_text).to eq(base_title)
-    end
-  end
-
-  describe "GET /home" do
-    it "home ページが表示される" do
-      get static_pages_home_url
-      # レスポンスが成功したか？
-      expect(response).to have_http_status(:success)
-      # タイトルの表示が適当か？
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq(base_title)
     end
@@ -30,10 +20,10 @@ RSpec.describe "StaticPages", type: :request do
 
   describe "GET /help" do
     it "help ページが表示される" do
-      get static_pages_help_url
-      # レスポンスが成功したか？
+      get help_path
+      # レスポンス
       expect(response).to have_http_status(:success)
-      # タイトルの表示が適当か？
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq("Help | #{base_title}")
     end
@@ -41,10 +31,10 @@ RSpec.describe "StaticPages", type: :request do
 
   describe "GET /about" do
     it "about ページが表示される" do
-      get static_pages_about_url
-      # レスポンスが成功したか？
+      get about_path
+      # レスポンス
       expect(response).to have_http_status(:success)
-      # タイトルの表示が適当か？
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq("About | #{base_title}")
     end
@@ -52,10 +42,10 @@ RSpec.describe "StaticPages", type: :request do
 
   describe "GET /contact" do
     it "contact ページが表示される" do
-      get static_pages_contact_url
-      # レスポンスが成功したか？
+      get contact_path
+      # レスポンス
       expect(response).to have_http_status(:success)
-      # タイトルの表示が適当か？
+      # タイトル
       title_text = get_title_text(response)
       expect(title_text).to eq("Contact | #{base_title}")
     end
