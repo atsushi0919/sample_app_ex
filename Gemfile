@@ -23,6 +23,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "nokogiri"
+  gem "rails-controller-testing"
   gem "rspec-rails"
 end
 
