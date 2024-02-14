@@ -4,7 +4,6 @@ RSpec.describe User, type: :model do
   let(:user) { build(:user) }
 
   describe "バリデーション" do
-
     context "データが条件を満たすとき" do
       it "保存できる" do
         expect(user).to be_valid
@@ -34,7 +33,7 @@ RSpec.describe User, type: :model do
     end
     context "email が 256 文字以上のとき" do
       it "エラーが発生する" do
-        user.email = "a" * 247 + "@test.com"
+        user.email = "#{'a' * 247}@test.com"
         expect(user).to_not be_valid
       end
     end
@@ -89,8 +88,5 @@ RSpec.describe User, type: :model do
         expect(user).to_not be_valid
       end
     end
-
-
-
   end
 end

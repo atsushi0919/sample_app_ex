@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 
+gem "bcrypt", "3.1.18"
 gem "bootsnap", require: false
 gem "bootstrap-sass", "3.4.1"
 gem "dotenv-rails"
@@ -16,7 +17,6 @@ gem "sassc-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
-gem 'bcrypt',          '3.1.18'
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
