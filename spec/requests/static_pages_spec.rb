@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe "StaticPages", type: :request do
+  include ApplicationHelper
+
   let(:base_title) { "Ruby on Rails Tutorial Sample App" }
 
   def get_title_text(response)
@@ -25,7 +27,7 @@ RSpec.describe "StaticPages", type: :request do
       expect(response).to have_http_status(:success)
       # タイトル
       title_text = get_title_text(response)
-      expect(title_text).to eq("Help | #{base_title}")
+      expect(title_text).to eq(full_title("Help"))
     end
   end
 
@@ -36,7 +38,7 @@ RSpec.describe "StaticPages", type: :request do
       expect(response).to have_http_status(:success)
       # タイトル
       title_text = get_title_text(response)
-      expect(title_text).to eq("About | #{base_title}")
+      expect(title_text).to eq(full_title("About"))
     end
   end
 
@@ -47,7 +49,7 @@ RSpec.describe "StaticPages", type: :request do
       expect(response).to have_http_status(:success)
       # タイトル
       title_text = get_title_text(response)
-      expect(title_text).to eq("Contact | #{base_title}")
+      expect(title_text).to eq(full_title("Contact"))
     end
   end
 end
