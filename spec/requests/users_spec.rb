@@ -50,8 +50,7 @@ RSpec.describe "Users", type: :request do
         expect do
           post users_path, params: user_params
         end.to change(User, :count).by 1
-
-        expect(response).to have_http_status(:found) # とりあえず
+        expect(flash).to be_any
         expect(response).to redirect_to User.last
       end
     end
