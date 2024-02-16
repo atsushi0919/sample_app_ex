@@ -1,10 +1,21 @@
 ja:
+  common:
+    name: &name "名前"
+    email: &email "メールアドレス"
+    password: &password "パスワード"
+    password_confirmation: &password_confirmation "パスワード確認"
+    signin: &signin "新規登録"
+    login: &login "ログイン"
   activerecord:
     models:
       user: "ユーザ"
     attributes:
       user:
-        name: "名前"
-        email: "メールアドレス"
-        password: "パスワード"
-        password_confirmation: "パスワード確認"
+        name: *name
+        email: *email
+        password: *password
+        password_confirmation: *password_confirmation
+      session:
+        email: *email
+        password: *password
+        
