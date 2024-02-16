@@ -3,19 +3,33 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user&.authenticate(params[:session][:password])
-      reset_session
-      params[:session][:remember_me] == "1" ? remember(user) : forget(user)
-      log_in user
-      redirect_to user
-    else
-      flash.now[:danger] = t("flash.invalid_email_password_combination")
-      render "new", status: :unprocessable_entity
-    end
+    handle_login(user)
   end
 
   def destroy
     log_out if logged_in?
     redirect_to root_url, status: :see_other
+  end
+
+  private
+
+  def handle_login(user)
+    if user&.authenticate(params[:session][:password])
+      handle_successful_login(user)
+    else
+      handle_failed_login
+    end
+  end
+
+  def handle_successful_login(user)
+    reset_session
+    params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+    log_in user
+    redirect_to user
+  end
+
+  def handle_failed_login
+    flash.now[:danger] = t("flash.invalid_email_password_combination")
+    render "new", status: :unprocessable_entity
   end
 end

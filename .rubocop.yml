@@ -48,3 +48,9 @@ Style/SymbolArray:
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
+
+Metrics/AbcSize:
+  Enabled: false
+
+Rails/HelperInstanceVariable:
+  Enabled: false
