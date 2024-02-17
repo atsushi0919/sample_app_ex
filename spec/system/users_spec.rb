@@ -5,7 +5,7 @@ RSpec.describe "Users", type: :system do
 
   describe "#create" do
     context "無効な値の場合" do
-      it "エラーメッセージ用の表示領域が描画される" do
+      it "エラーメッセージが表示される" do
         visit signup_path
         fill_in I18n.t("common.name"), with: ""
         fill_in I18n.t("common.email"), with: "user@invlid"
