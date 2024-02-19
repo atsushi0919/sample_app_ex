@@ -10,4 +10,9 @@ FactoryBot.define do
     name { "Michael Example" }
     email { "michael@example.com" }
   end
+
+  trait :archer do
+    name { "Sterling Archer" }
+    email { "duchess@example.gov" }
+  end
 end

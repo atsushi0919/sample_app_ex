@@ -57,12 +57,12 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "get /users/{id}/edit" do
-    let(:user) { create(:user) }
+    let(:user) { create(:user, :michael) }
 
     it "ログインしていればタイトルが正しく表示される" do
       sign_in(user)
       get edit_user_path(user)
-      expect(response.body).to include full_title('Edit user')
+      expect(response.body).to include full_title("Edit user")
     end
 
     context "未ログインのとき" do
@@ -76,11 +76,27 @@ RSpec.describe "Users", type: :request do
         expect(response).to redirect_to login_path
       end
     end
+
+    context "別のユーザを編集しようとしたとき" do
+      let(:other_user) { create(:user, :archer) }
+      before do
+        sign_in(user)
+      end
+
+      it "flash は表示されない" do
+        get edit_user_path(other_user)
+        expect(flash).to be_empty
+      end
+
+      it "root_path にリダイレクトされる" do
+        get edit_user_path(other_user)
+        expect(response).to redirect_to root_path
+      end
+    end
   end
 
   describe "PATCH /users" do
     let(:user) { create(:user) }
-
 
     it "ログインしていれば正しいタイトルが表示される" do
       sign_in(user)
@@ -169,6 +185,23 @@ RSpec.describe "Users", type: :request do
                   email: user.email }
         }
         expect(response).to redirect_to login_path
+      end
+    end
+
+    context "別のユーザを編集しようとしたとき" do
+      let(:other_user) { create(:user, :archer) }
+      before do
+        sign_in(user)
+        patch user_path(other_user), params: { user: { name: user.name,
+                                                       email: user.email } }
+      end
+
+      it "flash が表示されない" do
+        expect(flash).to be_empty
+      end
+
+      it "root にリダイレクトする" do
+        expect(response).to redirect_to root_path
       end
     end
   end

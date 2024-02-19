@@ -52,5 +52,8 @@ Metrics/BlockLength:
 Metrics/AbcSize:
   Enabled: false
 
+Metrics/MethodLength:
+  Enabled: false
+
 Rails/HelperInstanceVariable:
   Enabled: false
