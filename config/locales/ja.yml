@@ -4,6 +4,7 @@ ja:
     welcome_to_sample_app: "Sample App へようこそ！"
     invalid_email_password_combination: "メールアドレスとパスワードの組み合わせが一致しません"
     profile_updated: "プロフィールを更新しました"
+    please_log_in: "ログインしてください"
   activerecord:
     errors:
       messages:

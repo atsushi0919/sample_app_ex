@@ -11,9 +11,15 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+# spec/support ディレクトリ内のすべてのファイルを読み込む
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
 RSpec.configure do |config|
   # FactoryBot を省略できるようにする
   config.include FactoryBot::Syntax::Methods
+
+  config.include AuthenticationHelper, type: :request
 
   config.fixture_path = Rails.root.join("spec/fixtures")
   config.use_transactional_fixtures = true
