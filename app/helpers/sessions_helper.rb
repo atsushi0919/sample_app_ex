@@ -51,6 +51,11 @@ module SessionsHelper
     @current_user = nil
   end
 
+  # アクセスしようとしたURLを保存する
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+
   def get_user_by_session(user_id)
     user = User.find_by(id: user_id)
     user if user && session[:session_token] == user.session_token

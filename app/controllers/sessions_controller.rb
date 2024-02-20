@@ -22,10 +22,11 @@ class SessionsController < ApplicationController
   end
 
   def handle_successful_login(user)
+    forwarding_url = session[:forwarding_url]
     reset_session
     params[:session][:remember_me] == "1" ? remember(user) : forget(user)
     log_in user
-    redirect_to user
+    redirect_to forwarding_url || user
   end
 
   def handle_failed_login

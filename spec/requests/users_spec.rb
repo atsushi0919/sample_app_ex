@@ -75,6 +75,12 @@ RSpec.describe "Users", type: :request do
         get edit_user_path(user)
         expect(response).to redirect_to login_path
       end
+
+      it "ログインすると編集ページにリダイレクトされる" do
+        get edit_user_path(user)
+        sign_in(user)
+        expect(response).to redirect_to edit_user_path(user)
+      end
     end
 
     context "別のユーザを編集しようとしたとき" do
@@ -202,6 +208,15 @@ RSpec.describe "Users", type: :request do
 
       it "root にリダイレクトする" do
         expect(response).to redirect_to root_path
+      end
+    end
+  end
+
+  describe "GET /users" do
+    context "非ログイン時" do
+      it "login_path にリダイレクトされる" do
+        get users_path
+        expect(response).to redirect_to login_path
       end
     end
   end
