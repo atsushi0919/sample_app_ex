@@ -252,8 +252,8 @@ RSpec.describe "Users", type: :request do
     end
 
     it "各ユーザのリンクが存在する" do
-      User.page(1).each do |user|
-        expect(response.body).to include "<a href="#{user_path(user)}">"
+      User.page(1).each do |_user|
+        expect(response.body).to include "<a href=" # {user_path(user)}">"
       end
     end
   end
@@ -265,12 +265,10 @@ RSpec.describe "Users", type: :request do
     context "admin ユーザでログインしているとき" do
       it "ユーザを削除できる" do
         sign_in(admin_user)
-        expect {
+        expect do
           delete user_path(other_user)
-      }.to change(User, :count).by(-1)
+        end.to change(User, :count).by(-1)
       end
     end
   end
-
-
 end

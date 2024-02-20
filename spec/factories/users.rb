@@ -24,7 +24,7 @@ FactoryBot.define do
 
   trait :malory do
     name { "Malory Archer" }
-    email { boss@example.gov }
+    email { boss @example.gov }
   end
 
   factory :continuous_users, class: User do

@@ -5,10 +5,12 @@ ruby "3.2.2"
 
 gem "bcrypt", "3.1.18"
 gem "bootsnap", require: false
+gem "bootstrap5-kaminari-views"
 gem "bootstrap-sass", "3.4.1"
 gem "dotenv-rails"
 gem "importmap-rails"
 gem "jbuilder"
+gem "kaminari"
 gem "mysql2", "~> 0.5"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
@@ -17,8 +19,6 @@ gem "sassc-rails"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
-gem 'kaminari'
-gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
