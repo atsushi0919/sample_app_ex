@@ -210,6 +210,21 @@ RSpec.describe "Users", type: :request do
         expect(response).to redirect_to root_path
       end
     end
+
+    context "admin 属性を更新しようとしたとき" do
+      it "更新できない" do
+        sign_in(user)
+        expect(user).to_not be_admin
+
+        patch user_path(user), params: {
+          user: { password: "password",
+                  password_confirmation: "password",
+                  admin: true }
+        }
+        user.reload
+        expect(user).to_not be_admin
+      end
+    end
   end
 
   describe "GET /users" do
@@ -242,4 +257,20 @@ RSpec.describe "Users", type: :request do
       end
     end
   end
+
+  describe "DELETE /users/{id}" do
+    let!(:admin_user) { create(:user, :michael) }
+    let!(:other_user) { create(:user) }
+
+    context "admin ユーザでログインしているとき" do
+      it "ユーザを削除できる" do
+        sign_in(admin_user)
+        expect {
+          delete user_path(other_user)
+      }.to change(User, :count).by(-1)
+      end
+    end
+  end
+
+
 end

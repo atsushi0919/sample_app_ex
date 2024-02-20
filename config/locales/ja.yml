@@ -5,6 +5,7 @@ ja:
     invalid_email_password_combination: "メールアドレスとパスワードの組み合わせが一致しません"
     profile_updated: "プロフィールを更新しました"
     please_log_in: "ログインしてください"
+    user_deleted: "ユーザを削除しました"
   activerecord:
     errors:
       messages:
