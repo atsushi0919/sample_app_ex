@@ -167,7 +167,7 @@ RSpec.describe "Users", type: :request do
         expect(user.email).to eq @email
       end
 
-      it "更新後 Users#show にリダイレクトする" do
+      it "更新後 Users#show にリダイレクトされる" do
         expect(response).to redirect_to user
       end
 
@@ -217,6 +217,28 @@ RSpec.describe "Users", type: :request do
       it "login_path にリダイレクトされる" do
         get users_path
         expect(response).to redirect_to login_path
+      end
+    end
+  end
+
+  describe "pagination" do
+    let(:user) { create(:user, :michael) }
+
+    before do
+      30.times do
+        create(:continuous_users)
+      end
+      sign_in(user)
+      get users_path
+    end
+
+    it "ページネーションが表示される" do
+      expect(response.body).to include '<ul class="pagination ">'
+    end
+
+    it "各ユーザのリンクが存在する" do
+      User.page(1).each do |user|
+        expect(response.body).to include "<a href="#{user_path(user)}">"
       end
     end
   end

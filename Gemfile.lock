@@ -80,6 +80,9 @@ GEM
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
       sassc (>= 2.0.0)
+    bootstrap5-kaminari-views (0.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.4)
     capybara (3.40.0)
       addressable
@@ -129,6 +132,18 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.7.1)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -344,6 +359,7 @@ DEPENDENCIES
   bcrypt (= 3.1.18)
   bootsnap
   bootstrap-sass (= 3.4.1)
+  bootstrap5-kaminari-views
   capybara
   debug
   dotenv-rails
@@ -352,6 +368,7 @@ DEPENDENCIES
   importmap-rails
   irb
   jbuilder
+  kaminari
   mysql2 (~> 0.5)
   nokogiri
   puma (~> 5.0)
