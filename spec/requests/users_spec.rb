@@ -51,7 +51,7 @@ RSpec.describe "Users", type: :request do
           post users_path, params: user_params
         end.to change(User, :count).by 1
         expect(flash).to be_any
-        expect(response).to redirect_to User.last
+        expect(response).to redirect_to root_path
       end
     end
   end

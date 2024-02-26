@@ -6,6 +6,7 @@ ja:
     profile_updated: "プロフィールを更新しました"
     please_log_in: "ログインしてください"
     user_deleted: "ユーザを削除しました"
+    check_email: "アクティベーションメールを送信しました"
   activerecord:
     errors:
       messages:

@@ -4,6 +4,8 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     password { "password" }
     password_confirmation { "password" }
+    activated { true }
+    activated_at { Time.zone.now }
   end
 
   trait :michael do
