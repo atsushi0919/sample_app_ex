@@ -59,10 +59,11 @@ Metrics/MethodLength:
 Rails/HelperInstanceVariable:
   Enabled: false
 
-# Rails/I18nLocaleTexts コップの設定
 Rails/I18nLocaleTexts:
   Enabled: false
 
-# Rails/BulkChangeTable コップの設定
 Rails/BulkChangeTable:
+  Enabled: false
+
+Naming/AccessorMethodName:
   Enabled: false

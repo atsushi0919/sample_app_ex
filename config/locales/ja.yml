@@ -11,6 +11,7 @@ ja:
     account_activated: "アカウントを有効化しました"
     invalid_activation_link: "無効なリンクです"
     email_not_found: "メールアドレスが見つかりません"
+    password_reset_has_expired: "リンクが有効切れです"
   activerecord:
     errors:
       messages:
