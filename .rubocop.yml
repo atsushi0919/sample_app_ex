@@ -48,6 +48,7 @@ Style/SymbolArray:
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
+    - "config/environments/development.rb"
 
 Metrics/AbcSize:
   Enabled: false
@@ -56,4 +57,12 @@ Metrics/MethodLength:
   Enabled: false
 
 Rails/HelperInstanceVariable:
+  Enabled: false
+
+# Rails/I18nLocaleTexts コップの設定
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+# Rails/BulkChangeTable コップの設定
+Rails/BulkChangeTable:
   Enabled: false

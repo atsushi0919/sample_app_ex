@@ -39,11 +39,20 @@ RSpec.describe "Users", type: :request do
     end
 
     context "有効な値を POST したとき" do
+      before do
+        ActionMailer::Base.deliveries.clear
+      end
+
       let(:user_params) do
         { user: { name: "Example User",
                   email: "user@example.com",
                   password: "password",
                   password_confirmation: "password" } }
+      end
+
+      it "メールが1件存在する" do
+        post users_path, params: user_params
+        expect(ActionMailer::Base.deliveries.size).to eq 1
       end
 
       it "保存できる" do
@@ -52,6 +61,11 @@ RSpec.describe "Users", type: :request do
         end.to change(User, :count).by 1
         expect(flash).to be_any
         expect(response).to redirect_to root_path
+      end
+
+      it "保存時点では activate されていない" do
+        post users_path, params: user_params
+        expect(User.last).to_not be_activated
       end
     end
   end
@@ -228,10 +242,19 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "GET /users" do
+    let(:user) { create(:user, :michael) }
+    let(:not_activated_user) { create(:user, :malory) }
+
     context "非ログイン時" do
       it "login_path にリダイレクトされる" do
         get users_path
         expect(response).to redirect_to login_path
+      end
+
+      it "activate されていないユーザーは表示されない" do
+        sign_in(user)
+        get users_path
+        expect(response.body).to_not include not_activated_user.name
       end
     end
   end

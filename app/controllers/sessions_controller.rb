@@ -22,11 +22,18 @@ class SessionsController < ApplicationController
   end
 
   def handle_successful_login(user)
-    forwarding_url = session[:forwarding_url]
-    reset_session
-    params[:session][:remember_me] == "1" ? remember(user) : forget(user)
-    log_in user
-    redirect_to forwarding_url || user
+    if user.activated?
+      forwarding_url = session[:forwarding_url]
+      reset_session
+      params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+      log_in user
+      redirect_to forwarding_url || user
+    else
+      message  = "アカウントが有効化されていません."
+      message += "アカウント有効化のメールを確認してください。"
+      flash[:warning] = message
+      redirect_to root_url
+    end
   end
 
   def handle_failed_login

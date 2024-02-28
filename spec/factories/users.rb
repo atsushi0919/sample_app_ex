@@ -24,9 +24,12 @@ FactoryBot.define do
     email { "hands@example.gov" }
   end
 
+  # アクティベート前のユーザー
   trait :malory do
     name { "Malory Archer" }
-    email { boss @example.gov }
+    email { "boss@example.gov" }
+    activated { false }
+    activated_at { nil }
   end
 
   factory :continuous_users, class: User do
@@ -34,5 +37,7 @@ FactoryBot.define do
     sequence(:email) { |n| "user-#{n}@example.com" }
     password { "password" }
     password_confirmation { "password" }
+    activated { true }
+    activated_at { Time.zone.now }
   end
 end

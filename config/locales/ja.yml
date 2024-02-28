@@ -7,6 +7,8 @@ ja:
     please_log_in: "ログインしてください"
     user_deleted: "ユーザを削除しました"
     check_email: "アクティベーションメールを送信しました"
+    account_activated: "アカウントを有効化しました"
+    invalid_activation_link: "無効なリンクです"
   activerecord:
     errors:
       messages:
