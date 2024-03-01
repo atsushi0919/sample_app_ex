@@ -4,9 +4,9 @@ RSpec.describe "Microposts", type: :request do
   describe "#create" do
     context "未ログインのとき" do
       it "登録されない" do
-        expect {
+        expect do
           post microposts_path, params: { micropost: { content: "Lorem ipsum" } }
-        }.to_not change(Micropost, :count)
+        end.to_not change(Micropost, :count)
       end
 
       it "ログインページにリダイレクトされる" do
@@ -29,9 +29,9 @@ RSpec.describe "Microposts", type: :request do
       end
 
       it "削除されない" do
-        expect {
+        expect do
           delete micropost_path(@post)
-        }.to_not change(Micropost, :count)
+        end.to_not change(Micropost, :count)
       end
 
       it "root にリダイレクトされる" do
@@ -42,9 +42,9 @@ RSpec.describe "Microposts", type: :request do
 
     context "未ログインの場合" do
       it "削除されない" do
-        expect {
+        expect do
           delete micropost_path(@post)
-        }.to_not change(Micropost, :count)
+        end.to_not change(Micropost, :count)
       end
 
       it "ログインページにリダイレクトされる" do

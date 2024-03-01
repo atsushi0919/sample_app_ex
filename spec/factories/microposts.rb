@@ -13,12 +13,12 @@ FactoryBot.define do
   factory :micropost do
     sequence(:content) { Faker::Lorem.sentence(word_count: 5) }
     created_at { 42.days.ago }
-    user { User.find_by(name: 'michael') || association(:user, name: 'michael') }
+    user { User.find_by(name: "michael") || association(:user, name: "michael") }
   end
 end
 
 def user_with_posts(posts_count: 5)
   create(:user) do |user|
-    create_list(:orange, posts_count, user: user)
+    create_list(:orange, posts_count, user:)
   end
 end

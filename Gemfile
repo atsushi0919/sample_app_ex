@@ -3,11 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 
+gem "active_storage_validations", "0.9.8"
 gem "bcrypt", "3.1.18"
 gem "bootsnap", require: false
 gem "bootstrap5-kaminari-views"
 gem "bootstrap-sass", "3.4.1"
 gem "dotenv-rails"
+gem "image_processing", "1.12.2"
 gem "importmap-rails"
 gem "jbuilder"
 gem "kaminari"

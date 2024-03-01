@@ -4,9 +4,9 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
+    @micropost.image.attach(params[:micropost][:image])
     if @micropost.save
       flash[:success] = "投稿しました！"
-      redirect_back_or_to(root_url, status: :see_other)
       redirect_to root_url
     else
       @feed_items = current_user.feed.page(params[:page])
@@ -23,7 +23,7 @@ class MicropostsController < ApplicationController
   private
 
   def micropost_params
-    params.require(:micropost).permit(:content)
+    params.require(:micropost).permit(:content, :image)
   end
 
   def correct_user

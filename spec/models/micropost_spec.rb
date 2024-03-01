@@ -32,8 +32,8 @@ RSpec.describe Micropost, type: :model do
   it "投稿したユーザが削除されたとき、そのユーザのMicropostも削除される" do
     post = create(:most_recent)
     user = post.user
-    expect {
+    expect do
       user.destroy
-    }.to change(Micropost, :count).by -1
+    end.to change(Micropost, :count).by(-1)
   end
 end

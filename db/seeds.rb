@@ -18,15 +18,11 @@ User.create!(name: "管理 太郎",
                password_confirmation: PASSWORD,
                activated: true,
                activated_at: Time.zone.now)
-  print "\r#{n+1}/99 "
 end
-puts
 
 # ユーザーの一部を対象にマイクロポストを生成する
 users = User.order(:created_at).take(6)
-50.times do |n|
+50.times do
   content = Faker::Lorem.sentence(word_count: 10)
-  users.each { |user| user.microposts.create!(content: content) }
-  print "\r#{n+1}/50 "
+  users.each { |user| user.microposts.create!(content:) }
 end
-puts
