@@ -97,4 +97,28 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "#follow and #unfollow" do
+   let(:user) { create(:user, :archer) }
+   let(:other) { create(:user, :lana) }
+
+   it "follow すると following? が true になる" do
+     expect(user.following?(other)).to_not be_truthy
+     user.follow(other)
+     expect(other.followers.include?(user)).to be_truthy
+     expect(user.following?(other)).to be_truthy
+   end
+
+   it "unfollow すると following? が false になる" do
+     user.follow(other)
+     expect(user.following?(other)).to_not be_falsey
+     user.unfollow(other)
+     expect(user.following?(other)).to be_falsey
+   end
+
+   it "自分を follow 出来ない" do
+    user.follow(user)
+    expect(user.following?(user)).to be_falsey
+  end
+ end
 end
