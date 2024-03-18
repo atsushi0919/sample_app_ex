@@ -294,4 +294,22 @@ RSpec.describe "Users", type: :request do
       end
     end
   end
+
+  describe "GET /users/{id}/following" do
+    let(:user) { create(:user) }
+
+    it "未ログインならログインページにリダイレクトする" do
+      get following_user_path(user)
+      expect(response).to redirect_to login_path
+    end
+  end
+
+  describe "GET /users/{id}/followers" do
+    let(:user) { create(:user) }
+
+    it "未ログインならログインページにリダイレクトする" do
+      get followers_user_path(user)
+      expect(response).to redirect_to login_path
+    end
+  end
 end
